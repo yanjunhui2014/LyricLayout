@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             switch (msg.what) {
                 case MSG_UPDATE_MULTI_SEEK:
                     mMultiSeek += UPDATE_INTERVAL;
-                    LibLyricLog.d(TAG, "mMultiSeek == " + mMultiSeek);
+                    LibLyricLog.d(TAG, "seek == " + mMultiSeek + "/" + mMaxMultiSeek);
 
-                    if (mMultiSeek > mMaxMultiSeek) {
+                    if (mMultiSeek >= mMaxMultiSeek) {
                         mMultiSeek = mMaxMultiSeek;
                         mWeakHandler.removeMessages(MSG_UPDATE_MULTI_SEEK);
                     } else {
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case MSG_UPDATE_SINGLE_SEEK:
                     mSingleSeek += UPDATE_INTERVAL;
-                    LibLyricLog.d(TAG, "mSingleSeek == " + mMultiSeek);
+                    LibLyricLog.d(TAG, "mSingleSeek == " + mSingleSeek);
 
                     if (mSingleSeek > DURATION_SINGLE) {
                         mSingleSeek = DURATION_SINGLE;
@@ -100,9 +100,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mLyricLayout.getLayoutParams();
         mLyricLayout.setContent("风到这里就是粘粘住过客的思念", DURATION_SINGLE, getScreenWidth(this) - params.leftMargin - params.rightMargin);
+        mLyricLayout.setTextColor(R.color.c1, R.color.c2);
 
         LinearLayout.LayoutParams multiPs = (LinearLayout.LayoutParams) mMultiLyricLayout.getLayoutParams();
         mMultiLyricLayout.setLyricData(getLyricDataList(), getScreenWidth(this) - multiPs.leftMargin - multiPs.rightMargin);
+        mMultiLyricLayout.setTextColor(R.color.c1, R.color.c2);
     }
 
     @Override
@@ -157,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mRaBtnSingle = findViewById(R.id.mRaBtnSingle);
         mRaBtnMulti = findViewById(R.id.mRaBtnMulti);
-//        mMultiLyricLayout.setTextColor(R.color.c1, R.color.c2);
+
 
         mSeekBar.setMax(10000);
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

@@ -13,6 +13,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 
 import com.milo.liblyric.LibLyricLog;
 import com.milo.liblyric.R;
@@ -29,8 +30,8 @@ import com.milo.liblyric.WeakHandler;
  * 2020/6/22
  */
 public class GradientRectTextView extends AppCompatTextView {
-    private static final   String TAG                    = "GradientRectTextView";
-    private static final   int    MSG_UPDATE             = 1;
+    private static final String TAG        = "GradientRectTextView";
+    private static final int    MSG_UPDATE = 1;
 
     public long mTotalCount;
     public long mStartCount = -1;
@@ -90,7 +91,12 @@ public class GradientRectTextView extends AppCompatTextView {
     public void setColor(@ColorRes int normalColor, @ColorRes int gradientCorlor) {
         mNormalColor = normalColor;
         mGradientColor = gradientCorlor;
-        mLinearGradient = new LinearGradient(0, getTop(), getMeasuredWidth(), getTop(), new int[]{getResources().getColor(mGradientColor), getResources().getColor(mNormalColor)},
+        setTextColor(ContextCompat.getColor(getContext(), mNormalColor));
+
+        if (mLinearGradient == null) {
+            return;
+        }
+        mLinearGradient = new LinearGradient(0, getTop(), getMeasuredWidth(), getTop(), new int[]{ContextCompat.getColor(getContext(), mGradientColor), ContextCompat.getColor(getContext(), mNormalColor)},
                 new float[]{1.0f, 0.0f}, Shader.TileMode.CLAMP);
         getPaint().setShader(mLinearGradient);
 
@@ -100,9 +106,11 @@ public class GradientRectTextView extends AppCompatTextView {
     }
 
     private void initGradient() {
+        setTextColor(ContextCompat.getColor(getContext(), mNormalColor));
         if (mLinearGradient == null) {
+
             //这里x0取值非常关键，它不是根据屏幕来的，而是根据当前组件来的，不然会导致渐变控制错误
-            mLinearGradient = new LinearGradient(0, getTop(), getMeasuredWidth(), getTop(), new int[]{getResources().getColor(mGradientColor), getResources().getColor(mNormalColor)},
+            mLinearGradient = new LinearGradient(0, getTop(), getMeasuredWidth(), getTop(), new int[]{ContextCompat.getColor(getContext(), mGradientColor), ContextCompat.getColor(getContext(), mNormalColor)},
                     new float[]{1.0f, 0.0f}, Shader.TileMode.CLAMP);
             getPaint().setShader(mLinearGradient);
 

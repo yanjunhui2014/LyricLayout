@@ -133,8 +133,7 @@ public class LyricLayout extends LinearLayout {
                             ItemData itemData = datas[i];
                             mGradientTextViews[i] = new GradientRectTextView(getContext());
                             mGradientTextViews[i].setText(itemData.text);
-//                            mGradientTextViews[i].setColor(mTextColor, mTextOverColor);
-                            mGradientTextViews[i].setTextColor(ContextCompat.getColor(getContext(), R.color.lib_lyric_white));
+                            mGradientTextViews[i].setColor(mTextColor, mTextOverColor);
                             mGradientTextViews[i].setStartAndEndCount(itemData.startTime, itemData.endTime);
 
                             if (i == datas.length - 1) {
@@ -209,8 +208,6 @@ public class LyricLayout extends LinearLayout {
     }
 
     private void init() {
-        mTextColor = getResources().getColor(R.color.lib_lyric_white);
-        mTextOverColor = getResources().getColor(R.color.lib_lyric_c1);
         setOrientation(LinearLayout.VERTICAL);
 
         TextView textView = new TextView(getContext());
