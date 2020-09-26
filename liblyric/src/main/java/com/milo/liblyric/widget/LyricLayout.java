@@ -9,7 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.milo.liblyric.LibLyricLog;
 import com.milo.liblyric.R;
@@ -36,10 +38,10 @@ import io.reactivex.functions.Function;
 public class LyricLayout extends LinearLayout {
     private static final String TAG = "LyricLayout";
 
-    @ColorInt
-    public int mTextColor;//默认颜色
-    @ColorInt
-    public int mTextOverColor;//歌词覆盖颜色
+    @ColorRes
+    public int mTextColor = R.color.lib_lyric_white;//默认颜色
+    @ColorRes
+    public int mTextOverColor = R.color.lib_lyric_c1;//歌词覆盖颜色
 
     public int    mTotalTime;
     public int    mCurTime;
@@ -50,7 +52,7 @@ public class LyricLayout extends LinearLayout {
     private GradientRectTextView[] mGradientTextViews;
 
     public LyricLayout(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public LyricLayout(Context context, @Nullable AttributeSet attrs) {
@@ -131,7 +133,8 @@ public class LyricLayout extends LinearLayout {
                             ItemData itemData = datas[i];
                             mGradientTextViews[i] = new GradientRectTextView(getContext());
                             mGradientTextViews[i].setText(itemData.text);
-                            mGradientTextViews[i].setTextColor(getResources().getColor(R.color.lib_lyric_white));
+//                            mGradientTextViews[i].setColor(mTextColor, mTextOverColor);
+                            mGradientTextViews[i].setTextColor(ContextCompat.getColor(getContext(), R.color.lib_lyric_white));
                             mGradientTextViews[i].setStartAndEndCount(itemData.startTime, itemData.endTime);
 
                             if (i == datas.length - 1) {
@@ -151,11 +154,30 @@ public class LyricLayout extends LinearLayout {
                 });
     }
 
+    public void setTextColor(@ColorRes int normalColor, @ColorRes int checkedColor) {
+        this.mTextColor = normalColor;
+        this.mTextOverColor = checkedColor;
+
+        if(mGradientTextViews != null){
+            for(GradientRectTextView rectTextView : mGradientTextViews){
+                rectTextView.setColor(normalColor, checkedColor);
+            }
+        }
+    }
+
+    /**
+     * 时间更新
+     *
+     * @param curTime
+     */
     public void updateTime(int curTime) {
         updateTime(curTime, false);
     }
 
-
+    /**
+     * @param curTime
+     * @param updateAllChild - 是否同时更新所有子view，适用于时间跳跃更新
+     */
     public void updateTime(int curTime, boolean updateAllChild) {
         if (mGradientTextViews == null) {
             return;

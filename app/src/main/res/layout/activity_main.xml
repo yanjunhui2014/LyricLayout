@@ -7,23 +7,108 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/mBtnDemo"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Demo演示"
-        android:textAllCaps="false"
+        android:padding="20dp"
+        android:text="单句歌词展示"
         android:textColor="@android:color/black"
-        android:textSize="15sp" />
+        android:textSize="17sp" />
 
+    <com.milo.liblyric.widget.LyricLayout
+        android:id="@+id/mLyricLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp" />
 
-    <Button
-        android:id="@+id/mBtnVideoDemo"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="视频实战演示"
-        android:textAllCaps="false"
+        android:padding="20dp"
+        android:text="多句歌词展示"
         android:textColor="@android:color/black"
-        android:textSize="15sp" />
+        android:textSize="17sp" />
+
+    <com.milo.liblyric.widget.MultiLyricLayout
+        android:id="@+id/mMultiLyricLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp" />
+
+    <SeekBar
+        android:id="@+id/mSeekBar"
+        style="@android:style/Widget.Material.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/mRaBtnSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="单句" />
+
+        <RadioButton
+            android:id="@+id/mRaBtnMulti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="多句" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mBtnStart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="开始"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/mBtnStop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="暂停"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/mBtnReset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="重置"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

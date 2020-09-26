@@ -29,8 +29,8 @@ import com.milo.liblyric.WeakHandler;
  * 2020/6/22
  */
 public class GradientRectTextView extends AppCompatTextView {
-    private static final String TAG        = "GradientRectTextView";
-    private static final int    MSG_UPDATE = 1;
+    private static final   String TAG                    = "GradientRectTextView";
+    private static final   int    MSG_UPDATE             = 1;
 
     public long mTotalCount;
     public long mStartCount = -1;
@@ -101,7 +101,7 @@ public class GradientRectTextView extends AppCompatTextView {
 
     private void initGradient() {
         if (mLinearGradient == null) {
-            //这里x0取值非常关键，它不是根据屏幕来的，而是根据当前组件来的。不然会导致渐变控制错误，这个坑踩了我3个小时，MD
+            //这里x0取值非常关键，它不是根据屏幕来的，而是根据当前组件来的，不然会导致渐变控制错误
             mLinearGradient = new LinearGradient(0, getTop(), getMeasuredWidth(), getTop(), new int[]{getResources().getColor(mGradientColor), getResources().getColor(mNormalColor)},
                     new float[]{1.0f, 0.0f}, Shader.TileMode.CLAMP);
             getPaint().setShader(mLinearGradient);
