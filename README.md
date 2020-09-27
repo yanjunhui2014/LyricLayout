@@ -12,9 +12,7 @@
 3、自定义字体大小；
 
 ##效果展示
-![image](https://github.com/yanjunhui2014/LyricLayout/blob/master/image/a.gif)
+![image](https://github.com/yanjunhui2014/LyricLayout/blob/master/image/a.png)
 
-![image](https://github.com/yanjunhui2014/LyricLayout/blob/master/image/b.gif)
-
-![image](https://github.com/yanjunhui2014/LyricLayout/blob/master/image/c.gif)
+![image](https://github.com/yanjunhui2014/LyricLayout/blob/master/image/b.png)
 
