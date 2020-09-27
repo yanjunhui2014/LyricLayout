@@ -18,8 +18,13 @@
 
 3、自定义字体大小；
 
-## 效果展示
-![image](https://upload-images.jianshu.io/upload_images/3914746-200da69db6287d97.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1080/format/webp)
+## 效果展示 （）
+![image](https://github.com/yanjunhui2014/LyricLayout/blob/master/screenshot/a.jpg)
 
 ![image](https://github.com/yanjunhui2014/LyricLayout/blob/master/screenshot/b.jpg)
+
+国内图片被墙了，看不到的话下载来看看吧，图片地址：
+https://github.com/yanjunhui2014/LyricLayout/blob/master/screenshot/a.gif
+https://github.com/yanjunhui2014/LyricLayout/blob/master/screenshot/b.gif
+https://github.com/yanjunhui2014/LyricLayout/blob/master/screenshot/c.gif
 
